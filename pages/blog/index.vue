@@ -29,21 +29,23 @@
         </p> 
       </div>
     </section>
-    <section class="articles px-[10%]">
-      <Articles />
-      <ContentList path="/blog" v-slot="{ list }">
+    <section class="articles px-[10%] flex flex-col gap-10">
+      <Articles :number="1" />
+      <Articles :number="2" />
+      <Articles :number="3" />
+      <!-- <ContentList path="/blog" v-slot="{ list }">
         <div v-for="article in list" :key="article._path">
           {{article.title}}
-          <!-- <h2>{{ article.title }}</h2> -->
-          <!-- <p>{{ article.description }}</p> -->
+          <h2>{{ article.title }}</h2>
+          <p>{{ article.description }}</p>
         </div>
-      </ContentList>
+      </ContentList> -->
     </section>
   </main>
 </template>
 
 <script setup>
-import Articles from '../../componenets/Articles'
+import Articles from '@/componenets/Articles'
 </script>
 
 <style>
