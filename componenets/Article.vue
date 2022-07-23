@@ -72,6 +72,9 @@ watch(y, (new_y) => {
 .article{
   @apply h-screen flex flex-col md:flex-row gap-10;
 }
+.article:last-of-type {
+  @apply mb-20
+}
 .article > div{
   @apply relative;
   min-height: calc(100vh/1.5);
@@ -86,10 +89,10 @@ watch(y, (new_y) => {
   height: v-bind(img_percentage_to_use);
 }
 .article > div:nth-child(even) {
-  @apply md:w-2/5
+  @apply md:w-2/5;
 }
 :global(.articles > .article:nth-child(even)) {
-  @apply flex-row-reverse
+  @apply md:flex-row-reverse
 }
 .article > div:nth-child(even) > div{
   @apply mt-10 transition-all duration-100;
@@ -105,8 +108,8 @@ watch(y, (new_y) => {
   @apply text-base text-gray-400 font-medium
 }
 .article > div > div > .title{
-  @apply text-8xl text-gray-700 mb-8 relative
-  underline decoration-gray-500 hover:decoration-blue-500
+  @apply text-8xl text-neutral-700 mb-8 relative
+  underline decoration-neutral-500 hover:decoration-amber-900
   decoration-8 underline-offset-4 transition-all duration-300
   cursor-pointer;
 }
