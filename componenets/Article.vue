@@ -12,7 +12,7 @@
           {{ title }}
           <a href=""></a>
         </h2>
-        <p class="description">{{ description }}</p>
+        <p class="description">{{ description }} {{`val: ${val} percentage_shown: ${percentage_shown}`}}</p>
         <button>LEARN MORE</button>
       </div>
     </div>
@@ -46,6 +46,8 @@ let entering_elem_y_cord = ref(null)
 const percentage_shown = computed(()=>(((target_height.value-elem_y_cord.value)/target_height.value)*100).toFixed(1))
 const img_percentage_to_use = computed(()=>is_visible.value?100+(percentage_shown.value/10)+"%":'100%')
 const txt_percentage_to_use = computed(()=>is_visible.value?((percentage_shown.value)*-1)+'px':'0')
+// get amount to translate elem based on percentage shown using value between 1-1.5
+const scale_y_translate = computed(()=>(percentage_shown.value * (1.5 - 1) / 100) + 1)
 
 function onIntersectionObserver([el]) {
   target_details.value = el
@@ -80,13 +82,15 @@ watch(y, (new_y) => {
   min-height: calc(100vh/1.5);
 }
 .article > div:nth-child(odd) {
-  @apply md:w-3/5;
+  @apply md:w-3/5 overflow-hidden;
 }
 .article > div:nth-child(odd) > div {
   @apply absolute bottom-0 left-0 right-0
   bg-no-repeat bg-cover bg-center
   transition-all duration-200;
-  height: v-bind(img_percentage_to_use);
+  height:100%;
+  transform: scale(v-bind(scale_y_translate));
+  transform-origin: bottom;
 }
 .article > div:nth-child(even) {
   @apply md:w-2/5;
