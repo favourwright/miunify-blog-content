@@ -32,24 +32,17 @@
     </section>
     <section class="articles px-[4%] xl:px-[10%] flex flex-col gap-10">
       <Article
-        title="Writing A Novel with A Heart"
-        description="Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean."
-        bg="ximage_1.jpg.pagespeed.ic.MUxtZlUbLa.webp" />
-      <Article
         title="The Only Way To Learn Is To Learn"
         description="Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean."
         bg="ximage_3.jpg.pagespeed.ic.dNvGCQOnGy.webp" />
-      <Article
-        title="The Only Way To Learn Is To Learn"
-        description="Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean."
-        bg="ximage_4.jpg.pagespeed.ic.x3WQ0kfx8W.webp" />
-      <!-- <ContentList path="/blog" v-slot="{ list }">
-        <div v-for="article in list" :key="article._path">
-          {{article.title}}
-          <h2>{{ article.title }}</h2>
-          <p>{{ article.description }}</p>
-        </div>
-      </ContentList> -->
+      <ContentList path="/blog" v-slot="{ list }">
+        <Article
+          v-for="article in list" :key="article._path"
+          :title="article.title"
+          :description="article.description"
+          :link="article._path"
+          bg="ximage_1.jpg.pagespeed.ic.MUxtZlUbLa.webp" />
+      </ContentList>
     </section>
   </main>
 </template>

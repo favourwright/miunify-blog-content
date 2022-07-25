@@ -10,7 +10,7 @@
         <!-- <div class="meta"><span>ADMIN</span> <span>JAN. 30, 2021</span></div> -->
         <h2 class="title">
           {{ title }}
-          <a href=""></a>
+          <a :href="link"></a>
         </h2>
         <p class="description">{{ description }}</p>
         <button>LEARN MORE</button>
@@ -35,6 +35,10 @@ const props = defineProps({
   bg: {
     type: String,
     default: 'ximage_1.jpg.pagespeed.ic.MUxtZlUbLa.webp'
+  },
+  link: {
+    type: String,
+    default: '/'
   }
 })
 let { y } = useWindowScroll()
@@ -73,7 +77,7 @@ watch(y, (new_y) => {
   @apply min-h-screen flex flex-col md:flex-row gap-10;
 }
 .article:last-of-type {
-  @apply mb-20
+  @apply mb-10 md:mb-20
 }
 .article > div{
   @apply relative;
