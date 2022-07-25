@@ -2,8 +2,8 @@
   <main class="min-h-screen bg-gray-100">
     <section>
       <header
-        class="flex justify-between items-center px-[2%] xl:px-[10%]
-        h-[90px] bg-amber-900 md:bg-white/80 md:fixed top-0 left-0 right-0 transition-all duration-300
+        class="flex justify-between items-center px-[4%] xl:px-[10%]
+        h-[60px] md:h-[90px] bg-neutral-700 md:bg-white/80 md:fixed top-0 left-0 right-0 transition-all duration-300
         backdrop-blur-lg z-40">
         <div
           class="tracking-[.3em] hover:tracking-[.36em] select-none
@@ -19,7 +19,7 @@
           </ul>
         </nav>
       </header>
-      <div id="landing" class="h-screen px-[2%] xl:px-[10%] flex flex-col justify-center">
+      <div id="landing" class="h-screen px-[4%] xl:px-[10%] flex flex-col justify-center">
         <h1 
           class="text-[20vw] md:text-[120px] font-extrabold
           tracking-wide text-neutral-700 text-right select-none">
@@ -30,7 +30,7 @@
         </p> 
       </div>
     </section>
-    <section class="articles px-[2%] xl:px-[10%] flex flex-col gap-10">
+    <section class="articles px-[4%] xl:px-[10%] flex flex-col gap-10">
       <Article
         title="Writing A Novel with A Heart"
         description="Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean."
