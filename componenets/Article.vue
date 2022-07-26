@@ -7,13 +7,12 @@
     </div>
     <div>
       <div>
-        <!-- <div class="meta"><span>ADMIN</span> <span>JAN. 30, 2021</span></div> -->
         <h2 class="title">
           {{ title }}
           <a :href="link"></a>
         </h2>
         <p class="description">{{ description }}</p>
-        <button>LEARN MORE</button>
+        <MoreBtn :link="link" :auto_play="auto_play">LEARN MORE</MoreBtn>
       </div>
     </div>
   </div>
@@ -22,6 +21,8 @@
 <script setup>
 import { vIntersectionObserver } from '@vueuse/components'
 import { useWindowScroll } from '@vueuse/core'
+import MoreBtn from '@/componenets/ViewArticleBtn'
+
 
 const props = defineProps({
   title: {
@@ -50,6 +51,7 @@ let entering_elem_y_cord = ref(null)
 const percentage_shown = computed(()=>(((target_height.value-elem_y_cord.value)/target_height.value)*100).toFixed(1))
 const img_percentage_to_use = computed(()=>is_visible.value?100+(percentage_shown.value/10)+"%":'100%')
 const txt_percentage_to_use = computed(()=>is_visible.value?((percentage_shown.value)*-1)+'px':'0')
+const auto_play = ref(false)
 
 function onIntersectionObserver([el]) {
   target_details.value = el
@@ -70,11 +72,15 @@ watch(y, (new_y) => {
     entering_elem_y_cord.value = entering
   }
 })
+watch(percentage_shown, (new_percentage) => {
+  auto_play.value = new_percentage > 60 ? true : false
+})
 </script>
 
 <style scoped>
 .article{
-  @apply min-h-screen flex flex-col md:flex-row gap-10;
+  @apply min-h-screen flex flex-col md:flex-row gap-10
+  border-4 md:border-none border-amber-700/20 relative;
 }
 .article:last-of-type {
   @apply mb-10 md:mb-20
@@ -99,7 +105,8 @@ watch(y, (new_y) => {
   @apply md:flex-row-reverse
 }
 .article > div:nth-child(even) > div{
-  @apply mt-10 transition-all duration-100;
+  @apply mt-10 transition-all duration-100
+  flex flex-col;
   transform: translateY(v-bind(txt_percentage_to_use));
 }
 /* prevent transform on mobile screens */
@@ -115,12 +122,18 @@ watch(y, (new_y) => {
   @apply text-6xl md:text-8xl text-neutral-700 mb-8 relative
   underline decoration-neutral-500 hover:decoration-amber-900
   decoration-4 md:decoration-8 underline-offset-4 transition-all duration-300
-  cursor-pointer;
+  cursor-pointer bg-white/10 backdrop-blur-sm md:bg-transparent px-3;
 }
 .article > div > div > .title > a{
   @apply absolute top-0 right-0 bottom-0 left-0
 }
 .article > div > div > .description{
-  @apply text-lg text-gray-500 mb-6
+  @apply text-lg text-gray-500 mb-6 px-3
+}
+.article button{
+  @apply md:self-end mx-3;
+}
+:global(.articles > .article:nth-child(even) button) {
+  @apply md:self-start
 }
 </style>
