@@ -73,14 +73,14 @@ watch(y, (new_y) => {
   }
 })
 watch(percentage_shown, (new_percentage) => {
-  auto_play.value = new_percentage > 60 ? true : false
+  auto_play.value = new_percentage > 50 ? true : false
 })
 </script>
 
 <style scoped>
 .article{
   @apply min-h-screen flex flex-col md:flex-row gap-10
-  border-4 md:border-none border-amber-700/20 relative;
+  border-4 md:border-none border-neutral-700/20 relative;
 }
 .article:last-of-type {
   @apply mb-10 md:mb-20
@@ -131,7 +131,7 @@ watch(percentage_shown, (new_percentage) => {
   @apply text-lg text-gray-500 mb-6 px-3
 }
 .article button{
-  @apply md:self-end mx-3;
+  @apply self-start md:self-end mx-3;
 }
 :global(.articles > .article:nth-child(even) button) {
   @apply md:self-start
