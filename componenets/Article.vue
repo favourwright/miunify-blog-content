@@ -73,7 +73,7 @@ watch(y, (new_y) => {
   }
 })
 watch(percentage_shown, (new_percentage) => {
-  auto_play.value = new_percentage > 50 ? true : false
+  auto_play.value = new_percentage > 60 ? true : false
 })
 </script>
 
